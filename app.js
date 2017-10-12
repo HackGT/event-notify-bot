@@ -6,7 +6,7 @@ var calendar = google.calendar('v3');
 var request = require('request');
 var moment = require('moment');
 
-var key = require('./key.json');
+var key = require(process.env.SETTINGS_FILE);
 var sent = {};
 
 var jwtClient = new google.auth.JWT(
@@ -19,7 +19,7 @@ var jwtClient = new google.auth.JWT(
 function makeMessage(event) {
 
     var text = {
-        "text": "<!everyone> Activity starting in 15 minutes:",
+        "text": "<!here> Activity starting in 15 minutes:",
         "attachments": [
             {
                 "color":"good",
