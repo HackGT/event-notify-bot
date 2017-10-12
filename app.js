@@ -40,6 +40,7 @@ function makeMessage(event) {
 }
 
 function run() {
+    console.log("Checking for events to send...");
     jwtClient.authorize(function (err, tokens) {
     if (err) {
         console.log(err);
@@ -56,8 +57,8 @@ function run() {
             for (var event of response.items) {
                 var data = JSON.stringify(makeMessage(event));
                 var start = moment(event.start.dateTime);  
-                console.log(moment().diff(start, 'minutes') );              
                 if (moment().diff(start, 'minutes') > -15 && moment().diff(start, 'minutes') < 0  && !sent[event.summary]) {
+                    console.log('Sending', event["summary"]);
                     var response = request.post(
                         {
                             url: process.env.SLACK_HOOK, 
@@ -73,4 +74,4 @@ function run() {
         });
     });
 }
-setInterval(run, 5000);
+setInterval(run, 15000);
