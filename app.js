@@ -19,7 +19,7 @@ var jwtClient = new google.auth.JWT(
 function makeMessage(event) {
 
     var text = {
-        "text": "<!here> Activity starting in 15 minutes:",
+        "text": "<!channel> Activity starting in 15 minutes:",
         "attachments": [
             {
                 "color":"good",
