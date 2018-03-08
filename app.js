@@ -48,7 +48,7 @@ function run() {
     }
     calendar.events.list({
         auth: jwtClient,
-        calendarId: "kkej52h638a33vnog1qf5m8hfo@group.calendar.google.com"
+        calendarId: process.env.CALENDAR_ID
     }, function(err, response) {
             if (err) {
                 console.log('The API returned an error: ' + err);
