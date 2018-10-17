@@ -30,9 +30,14 @@ function makeMessage(event) {
 
     var date = moment(event.start.dateTime).format("h:mm A");
     var end = moment(event.end.dateTime).format("h:mm A");
+    if (!event.location) {
+        var location_string = "";   
+    } else {
+        var location_string = ` in ${event.location}`;   
+    }
 
     text["attachments"][0]["title"] = event["summary"];
-    text["attachments"][0]["text"] = `${date} - ${end} in ${event.location}`;
+    text["attachments"][0]["text"] = `${date} - ${end}${location_string}`;
     if (event["description"]) {
         text["attachments"][0]["text"] += `\n${event.description}`
     }
