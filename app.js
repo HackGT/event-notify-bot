@@ -63,7 +63,7 @@ function run() {
                 for (var event of response.items) {
                     var data = JSON.stringify(makeMessage(event));
                     var start = moment(event.start.dateTime);
-                    if (moment().diff(start, 'minutes') > -15 && moment().diff(start, 'minutes') < 0 && !sent[event.summary]) {
+                    if (moment().diff(start, 'minutes') > -8 && moment().diff(start, 'minutes') < 0 && !sent[event.summary]) {
                         console.log('Sending', event["summary"]);
                         var response = request.post(
                             {
